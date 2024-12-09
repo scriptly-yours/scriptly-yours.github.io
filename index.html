@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scriptly Yours</title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 0 1rem;
+    }
+
+    header {
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 1rem auto;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .flex-item {
+      flex: 1;
+    }
+    video {
+      width: 100%;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .flex-item {
+        flex: 1 1 18%;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Scriptly Yours</h1>
+    </header>
+    <main>
+      <div v-for="config in configs">
+        <h3>{{ config.title }}</h3>
+        <div class="flex-container">
+          <div class="flex-item" v-for="i in 10" :key="i">
+            <video autoplay loop>
+              <source :src="`video_results/${config.path}_${i-1}.mp4`" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div style="margin-bottom: 30px;"></div>
+      </div>
+
+
+    </main>
+  </div>
+
+  <script>
+    const { createApp, ref } = Vue;
+
+    createApp({
+      setup() {
+        // Using the Composition API
+        const configs = [
+          { title: 'Class-Conditioned with augmented printed text', path:'cls_cnd_aug_printed'},
+          { title: 'Class-Conditioned with plain printed text', path:'cls_cnd_no_aug'},
+          { title: 'Unconditional with augmented printed text', path:'uncnd_aug_printed'},
+          { title: 'Unconditional with plain printed text', path:'uncnd_no_aug'},
+        ]
+
+        return {
+          configs,
+        };
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
