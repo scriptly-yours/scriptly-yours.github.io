@@ -70,6 +70,10 @@
       <h1>Scriptly Yours</h1>
     </header>
     <main>
+      The following transition animation is created by interpolating between a given handwritten text with its printed version, i.e. interp = alpha * printed + (1 - alpha) * handwritten, in a diffusion model's latent space. In each video, the alpha is increment from 0.0 to 0.3 linearly in 3 seconds (24 fps).
+
+      <div style="margin-bottom: 50px;"></div>
+
       <div v-for="config in configs">
         <h3>{{ config.title }}</h3>
         <div class="flex-container">
