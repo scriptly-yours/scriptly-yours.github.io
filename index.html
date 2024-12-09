@@ -74,7 +74,7 @@
         <h3>{{ config.title }}</h3>
         <div class="flex-container">
           <div class="flex-item" v-for="i in 10" :key="i">
-            <video autoplay loop muted>
+            <video autoplay loop muted playsinline>
               <source :src="`video_results/${config.path}_${i-1}.mp4`" type="video/mp4">
               Your browser does not support the video tag.
             </video>
